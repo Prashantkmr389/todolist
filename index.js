@@ -9,10 +9,12 @@ const port = 3000;
 
 
 app.use(express.urlencoded());
+app.use(express.static("./assets"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
 app.use("/",require("./routes/"));
+
 
 
 
