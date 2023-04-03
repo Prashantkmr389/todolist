@@ -16,7 +16,7 @@ app.set("views", "./views");
 app.use("/",require("./routes/"));
 
 
-
+const db = require("./config/mongoose");
 
 
 app.listen(port, hostname, () => {

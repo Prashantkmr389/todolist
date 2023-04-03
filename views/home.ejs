@@ -11,9 +11,71 @@
     <title><%=title%></title>
 </head>
 <body>
-    <h1>Hello hope you are doing well</h1>
-    <button type="submit" id="btn"></button>
+    <h1>TodoList</h1>
     
+
+    
+    <div class="divdesc">
+        <form action="/newTask" method="post">
+        <p>Description</p>
+        <!-- <label for="desc">Description</label> -->
+        <textarea name="desc" id="desc" cols="150" rows="5"></textarea>
+        <!-- <input cols="40" row="5" type="text" id="desc" name="desc"> -->
+    </div>
+    <div id="second">
+        <div id="divcategory">
+            <p>Category</p>
+            <!-- <label for="category">Category</label> -->
+            <select name="category" id="category" required>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+                <option value="College">College</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div id="divdue">
+            <p>Due Date</p>
+            <!-- <label for="due">Due</label> -->
+            <input type="date" id="due" name="due" required>
+        </div>
+    </div>
+    <div id="divbutton">
+        <button type="submit" id="addNewTask">Add Task</button>
+        </form>
+        <button type="submit" id="deleteButton">Delete</button>
+    </div>
+    
+    
+    <div id="taskList">
+ 
+        <% for(let i of todoList){ %>
+            <div id="singleTask">
+                <div id="withoudbtn">
+                    <div>
+                        <input type="checkbox" name="checkbox" id="checkbox" uid = <%=i._id%> >
+                    </div>
+                
+                    <div id="nameAndDue">
+                        <!-- <div id="pdesc"><%=i.desc%></div> -->
+                        <p id="pdesc"><%=i.desc%></p>
+                        <p id="pdue"> <%=i.due%></p>
+                    
+                    </div>
+                </div>
+                
+                <div id="categoryAndBtn">
+                    
+                    <p id="pcategory"><%= i.category%></p>
+                    <a href="deletind/?id=<%=i._id%>"><button type="submit" id="deleteind">delete this</button></a>
+                </div>
+                 
+            </div>
+            
+        <% } %>
+
+    </div>
+   
     <script src="./javascript/index.js"></script>
 </body>
 </html>
